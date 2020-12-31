@@ -5,7 +5,11 @@ class Node {
   }
 
   set nextNode(node) {
+    if (node instanceof Node || node === null) {
       this.next = node;
+    } else {
+      throw new Error('The value for next should be null or another node');
+    }
   }
 }
 
@@ -14,13 +18,14 @@ console.log(firstNode);
 console.log(firstNode.data);
 console.log(firstNode.next);
 
-(firstNode.next) ? console.log('The node has links') : console.log('This is an orphan node');
+firstNode.next
+  ? console.log('The node has links')
+  : console.log('This is an orphan node');
 
 const secondNode = new Node('data for second node');
 console.log(secondNode);
 
-firstNode.nextNode = secondNode;
-console.log(firstNode)
-console.log(firstNode.next.data);
+firstNode.nextNode = "random string that will throw error";
+console.log(firstNode);
 
 module.exports = Node;
