@@ -11,6 +11,10 @@ class Node {
       throw new Error('The value for next should be null or another node');
     }
   }
+
+  get nextNode() {
+    return this.next;
+  }
 }
 
 const firstNode = new Node('data for first node');
@@ -25,7 +29,8 @@ firstNode.next
 const secondNode = new Node('data for second node');
 console.log(secondNode);
 
-firstNode.nextNode = "random string that will throw error";
+firstNode.nextNode = secondNode;
 console.log(firstNode);
+console.log(firstNode.nextNode)
 
 module.exports = Node;
