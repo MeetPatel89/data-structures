@@ -36,6 +36,17 @@ class LinkedList {
       return;
     }
   }
+
+  printList() {
+      let listData = '<head> -> ';
+      let currentHead = this.head;
+      while (currentHead !== null) {
+          listData += `${currentHead.data} -> `;
+          currentHead = currentHead.nextNode;
+      }
+      listData += `<tail>`
+      return listData;
+  }
 }
 
 const linkedList = new LinkedList();
@@ -46,9 +57,10 @@ linkedList.addToHead('head data for the linked list');
 console.log(linkedList);
 linkedList.addToTail('last tail data for linked list');
 console.log(linkedList);
-console.log(linkedList.head.next.next);
+console.log(linkedList.printList());
 console.log('Removing head');
 const headData = linkedList.removeHead();
 console.log(linkedList);
 console.log(headData);
+console.log(linkedList.printList());
 
