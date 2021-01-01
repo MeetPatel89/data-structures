@@ -18,12 +18,22 @@ class LinkedList {
     const newTail = new Node(data);
     let currentNode = this.head;
     if (currentNode === null) {
-      this.head = newTail;
+      this.addToHead(data);
     } else {
-      while (currentNode.next !== null) {
+      while (currentNode.nextNode !== null) {
         currentNode = currentNode.next;
       }
       currentNode.nextNode = newTail;
+    }
+  }
+
+  removeHead() {
+    const currentHead = this.head;
+    if (currentHead) {
+        this.head = currentHead.nextNode;
+        return currentHead.data;
+    } else {
+      return;
     }
   }
 }
@@ -32,8 +42,13 @@ const linkedList = new LinkedList();
 console.log(linkedList);
 linkedList.addToTail('tail data for empty linked list');
 console.log(linkedList);
-linkedList.addToHead("head data for the linked list");
+linkedList.addToHead('head data for the linked list');
 console.log(linkedList);
-linkedList.addToTail("last tail data for linked list");
+linkedList.addToTail('last tail data for linked list');
 console.log(linkedList);
-console.log(linkedList.head.next.next)
+console.log(linkedList.head.next.next);
+console.log('Removing head');
+const headData = linkedList.removeHead();
+console.log(linkedList);
+console.log(headData);
+
