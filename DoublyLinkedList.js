@@ -23,20 +23,18 @@ class DoublyLinkedList {
     if (currentHead) {
       currentHead.previousNode = newHead;
       newHead.nextNode = currentHead;
-      this.head = newHead;
     }
     this.head = newHead;
-
-    this.tail = newHead;
+    if (!this.tail) {
+        this.tail = newHead;
+    }
   }
 }
 
 const randomDoublyLinkedList = new DoublyLinkedList();
-
 console.log(randomDoublyLinkedList);
-randomDoublyLinkedList.addToHead(
-  'Random addition to head of doubly linked list'
-);
+randomDoublyLinkedList.addToHead('First list element');
 console.log(randomDoublyLinkedList);
-randomDoublyLinkedList.addToHead("Another random addition I am loving it");
-console.log(randomDoublyLinkedList)
+randomDoublyLinkedList.addToHead('Second list element');
+randomDoublyLinkedList.addToHead('Third list element');
+console.log(randomDoublyLinkedList);
