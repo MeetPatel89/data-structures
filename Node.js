@@ -17,7 +17,7 @@ class Node {
   }
 }
 
-class Node_double {
+class NodeDouble {
   constructor(data) {
     this.data = data;
     this.next = null;
@@ -25,7 +25,7 @@ class Node_double {
   }
 
   setNextNode(node) {
-    if (node instanceof Node_double || node === null) {
+    if (node instanceof NodeDouble || node === null) {
       this.next = node;
     } else {
       throw new Error('Next node must be a member of the Node_double class or null')
@@ -33,7 +33,7 @@ class Node_double {
   }
 
   setPreviousNode(node) {
-    if (node instanceof Node_double || node === null) {
+    if (node instanceof NodeDouble || node === null) {
       this.previous = node;
     } else {
       throw new Error('Next node must be a member of the Node_double class or null')
@@ -56,3 +56,4 @@ const secondNode = new Node('data for second node');
 firstNode.nextNode = secondNode;
 
 exports.Node = Node;
+exports.NodeDouble = NodeDouble;
