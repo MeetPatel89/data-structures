@@ -24,7 +24,7 @@ class NodeDouble {
     this.previous = null;
   }
 
-  setNextNode(node) {
+  set nextNode(node) {
     if (node instanceof NodeDouble || node === null) {
       this.next = node;
     } else {
@@ -32,7 +32,7 @@ class NodeDouble {
     }
   }
 
-  setPreviousNode(node) {
+  set previousNode(node) {
     if (node instanceof NodeDouble || node === null) {
       this.previous = node;
     } else {
@@ -40,11 +40,11 @@ class NodeDouble {
     }
   }
 
-  getNextNode() {
+  get nextNode() {
     return this.next;
   }
   
-  getPreviousNode() {
+  get previousNode() {
     return this.previous;
   }
 }
