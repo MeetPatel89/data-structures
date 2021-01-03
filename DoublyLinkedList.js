@@ -26,30 +26,44 @@ class DoublyLinkedList {
     }
     this.head = newHead;
     if (!this.tail) {
-        this.tail = newHead;
+      this.tail = newHead;
     }
   }
 
   addToTail(data) {
-      const newTail = new NodeDouble(data);
-      const currentTail = this.tail;
-      if (currentTail) {
-          currentTail.nextNode = newTail;
-          newTail.previousNode = currentTail;
-      }
-      this.tail = newTail;
-      if (!this.head) {
-          this.head = newTail;
-      }
+    const newTail = new NodeDouble(data);
+    const currentTail = this.tail;
+    if (currentTail) {
+      currentTail.nextNode = newTail;
+      newTail.previousNode = currentTail;
+    }
+    this.tail = newTail;
+    if (!this.head) {
+      this.head = newTail;
+    }
   }
+
+  removeHead() {
+    let currentHead = this.head;
+    if (!currentHead) {
+      return;
+    }
+    this.head = currentHead.nextNode;
+    currentHead = this.head;
+    if (currentHead) {
+        currentHead.previousNode = null;
+    }
+    
+  }
+
+  
 }
 
 const randomDoublyLinkedList = new DoublyLinkedList();
 console.log(randomDoublyLinkedList);
-randomDoublyLinkedList.addToHead('First list element');
+randomDoublyLinkedList.addToHead('Add first head element');
+randomDoublyLinkedList.addToHead('Add second head element');
 console.log(randomDoublyLinkedList);
-randomDoublyLinkedList.addToHead('Second list element');
-randomDoublyLinkedList.addToHead('Third list element');
+randomDoublyLinkedList.removeHead();
 console.log(randomDoublyLinkedList);
-randomDoublyLinkedList.addToTail('New first tail added')
-console.log(randomDoublyLinkedList.tail.previous.previous.data)
+
