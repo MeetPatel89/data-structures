@@ -51,12 +51,25 @@ class DoublyLinkedList {
     this.head = currentHead.nextNode;
     currentHead = this.head;
     if (currentHead) {
-        currentHead.previousNode = null;
+      currentHead.previousNode = null;
+    } else {
+      this.removeTail();
     }
-    
   }
 
-  
+  removeTail() {
+    let currentTail = this.tail;
+    if (!currentTail) {
+      return;
+    }
+    this.tail = currentTail.previousNode;
+    currentTail = this.tail;
+    if (currentTail) {
+      currentTail.nextNode = null;
+    } else {
+      this.removeHead();
+    }
+  }
 }
 
 const randomDoublyLinkedList = new DoublyLinkedList();
@@ -64,6 +77,7 @@ console.log(randomDoublyLinkedList);
 randomDoublyLinkedList.addToHead('Add first head element');
 randomDoublyLinkedList.addToHead('Add second head element');
 console.log(randomDoublyLinkedList);
-randomDoublyLinkedList.removeHead();
+randomDoublyLinkedList.removeTail();
 console.log(randomDoublyLinkedList);
-
+randomDoublyLinkedList.removeTail();
+console.log(randomDoublyLinkedList);
