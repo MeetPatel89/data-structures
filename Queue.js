@@ -8,19 +8,11 @@ class Queue {
   }
 
   hasRoom() {
-      if (this.size < this.maxSize) {
-          return true;
-      } else {
-          return false;
-      }
+    return this.size < this.maxSize;
   }
 
   isEmpty() {
-      if (this.size === 0) {
-          return true;
-      } else {
-          return false;
-      }
+    return this.size === 0;
   }
 
   enqueue(data) {
@@ -30,9 +22,14 @@ class Queue {
   }
 
   dequeue() {
+    if (!this.isEmpty()) {
       const data = this.queue.removeHead();
       this.size--;
       console.log(`Removed ${data}! Queue size is ${this.size}`);
+      return data;
+    } else {
+      throw new Error('Queue is empty!');
+    }
   }
 }
 
@@ -45,4 +42,6 @@ console.log(restaurantOrder);
 restaurantOrder.queue.printList();
 restaurantOrder.dequeue();
 restaurantOrder.queue.printList();
-
+restaurantOrder.dequeue();
+restaurantOrder.dequeue();
+restaurantOrder.dequeue();
