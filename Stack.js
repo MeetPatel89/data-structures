@@ -1,8 +1,10 @@
 const LinkedList = require('./LinkedList');
 
 class Stack {
-  constructor() {
+  constructor(maxSize = Infinity) {
     this.stack = new LinkedList();
+    this.size = 0;
+    this.maxSize = maxSize;
   }
 
   push(value) {
@@ -10,15 +12,22 @@ class Stack {
   }
 
   pop() {
-    const removedData = this.stack.removeHead();
-    return removedData;
+      if (this.size > 0) {
+        const removedData = this.stack.removeHead();
+        this.size--;
+        return removedData;
+      } else {
+          return null;
+      }
+    
   }
 
   peek() {
-    if (this.stack.head) {
+    if (this.size > 0) {
       return this.stack.head.data;
     } else {
       return 'The stack is empty!';
+
     }
   }
 }
