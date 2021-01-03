@@ -98,6 +98,7 @@ class DoublyLinkedList {
   }
 }
 
+/*
 const randomDoublyLinkedList = new DoublyLinkedList();
 console.log(randomDoublyLinkedList);
 randomDoublyLinkedList.addToHead('Add first head element');
@@ -110,3 +111,6 @@ randomDoublyLinkedList.removeByData('Add first tail element');
 randomDoublyLinkedList.removeByData('Add first head');
 randomDoublyLinkedList.removeByData('Add first head element');
 randomDoublyLinkedList.printList();
+*/
+
+module.exports = DoublyLinkedList;
