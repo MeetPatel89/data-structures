@@ -49,6 +49,7 @@ class LinkedList {
   }
 }
 
+/*
 const linkedList = new LinkedList();
 console.log(linkedList);
 linkedList.addToTail('tail data for empty linked list');
@@ -63,4 +64,8 @@ const headData = linkedList.removeHead();
 console.log(linkedList);
 console.log(headData);
 console.log(linkedList.printList());
+*/
+
+module.exports = LinkedList;
+
 
