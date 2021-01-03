@@ -7,27 +7,38 @@ class Stack {
     this.maxSize = maxSize;
   }
 
+  hasRoom() {
+    return this.size < this.maxSize;
+  }
+
+  isEmpty() {
+    return this.size === 0;
+  }
+
   push(value) {
-    this.stack.addToHead(value);
+    if (this.hasRoom()) {
+      this.stack.addToHead(value);
+      this.size++;
+    } else {
+      throw new Error('The stack is full!');
+    }
   }
 
   pop() {
-      if (this.size > 0) {
-        const removedData = this.stack.removeHead();
-        this.size--;
-        return removedData;
-      } else {
-          return null;
-      }
-    
+    if (!this.isEmpty()) {
+      const removedData = this.stack.removeHead();
+      this.size--;
+      return removedData;
+    } else {
+      return null;
+    }
   }
 
   peek() {
-    if (this.size > 0) {
+    if (!this.isEmpty()) {
       return this.stack.head.data;
     } else {
       return 'The stack is empty!';
-
     }
   }
 }
