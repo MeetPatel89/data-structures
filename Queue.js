@@ -1,9 +1,26 @@
 const LinkedList = require('./LinkedList');
 
 class Queue {
-  constructor() {
+  constructor(maxSize = Infinity) {
     this.queue = new LinkedList();
     this.size = 0;
+    this.maxSize = maxSize;
+  }
+
+  hasRoom() {
+      if (this.size < this.maxSize) {
+          return true;
+      } else {
+          return false;
+      }
+  }
+
+  isEmpty() {
+      if (this.size === 0) {
+          return true;
+      } else {
+          return false;
+      }
   }
 
   enqueue(data) {
