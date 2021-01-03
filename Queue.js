@@ -16,9 +16,13 @@ class Queue {
   }
 
   enqueue(data) {
-    this.queue.addToTail(data);
-    this.size++;
-    console.log(`Added '${data}'! Queue size is now ${this.size}`);
+    if (this.hasRoom()) {
+      this.queue.addToTail(data);
+      this.size++;
+      console.log(`Added '${data}'! Queue size is now ${this.size}`);
+    } else {
+      throw new Error("Queue has reached it's maximum size");
+    }
   }
 
   dequeue() {
@@ -33,15 +37,11 @@ class Queue {
   }
 }
 
-const restaurantOrder = new Queue();
+const restaurantOrder = new Queue(4);
 console.log(restaurantOrder);
 restaurantOrder.enqueue('first order');
 restaurantOrder.enqueue('second order');
 restaurantOrder.enqueue('third order');
-console.log(restaurantOrder);
-restaurantOrder.queue.printList();
-restaurantOrder.dequeue();
-restaurantOrder.queue.printList();
-restaurantOrder.dequeue();
-restaurantOrder.dequeue();
-restaurantOrder.dequeue();
+restaurantOrder.enqueue('fourth order');
+restaurantOrder.enqueue('fifth order');
+
