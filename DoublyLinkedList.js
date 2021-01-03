@@ -76,21 +76,25 @@ class DoublyLinkedList {
     let currentNode = this.head;
     while (currentNode !== null) {
         if (currentNode.data === data) {
-            if (currentNode === this.head) {
-                this.removeHead();
-            } else if (currentNode === this.tail) {
-                this.removeTail();
-            } else {
-                const afterRemovedNode = currentNode.nextNode;
-                const beforeRemovedNode = currentNode.previousNode;
-                beforeRemovedNode.nextNode = afterRemovedNode;
-                afterRemovedNode.previousNode = beforeRemovedNode;
-                return currentNode;
-            }
+            nodeToRemove = currentNode;
+            break;
+            
         }
         currentNode = currentNode.nextNode;
     }
-    return currentNode;
+    if (nodeToRemove === this.head) {
+      this.removeHead();
+    } else if (nodeToRemove === this.tail) {
+      this.removeTail();
+    } else if (!nodeToRemove) {
+      return null;
+    } else {
+      const afterRemovedNode = nodeToRemove.nextNode;
+      const beforeRemovedNode = nodeToRemove.previousNode;
+      beforeRemovedNode.nextNode = afterRemovedNode;
+      afterRemovedNode.previousNode = beforeRemovedNode;
+      return nodeToRemove;
+    }
   }
 }
 
