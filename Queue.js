@@ -44,4 +44,3 @@ restaurantOrder.enqueue('second order');
 restaurantOrder.enqueue('third order');
 restaurantOrder.enqueue('fourth order');
 restaurantOrder.enqueue('fifth order');
-
