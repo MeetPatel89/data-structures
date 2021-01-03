@@ -49,12 +49,12 @@ class DoublyLinkedList {
       return;
     }
     this.head = currentHead.nextNode;
-    currentHead = this.head;
-    if (currentHead) {
-      currentHead.previousNode = null;
+    if (this.head) {
+      this.head.previousNode = null;
     } else {
       this.removeTail();
     }
+    return currentHead.data;
   }
 
   removeTail() {
@@ -63,12 +63,34 @@ class DoublyLinkedList {
       return;
     }
     this.tail = currentTail.previousNode;
-    currentTail = this.tail;
-    if (currentTail) {
-      currentTail.nextNode = null;
+    if (this.tail) {
+      this.tail.nextNode = null;
     } else {
       this.removeHead();
     }
+    return currentTail.data;
+  }
+
+  removeByData(data) {
+    let nodeToRemove;
+    let currentNode = this.head;
+    while (currentNode !== null) {
+        if (currentNode.data === data) {
+            if (currentNode === this.head) {
+                this.removeHead();
+            } else if (currentNode === this.tail) {
+                this.removeTail();
+            } else {
+                const afterRemovedNode = currentNode.nextNode;
+                const beforeRemovedNode = currentNode.previousNode;
+                beforeRemovedNode.nextNode = afterRemovedNode;
+                afterRemovedNode.previousNode = beforeRemovedNode;
+                return currentNode;
+            }
+        }
+        currentNode = currentNode.nextNode;
+    }
+    return currentNode;
   }
 }
 
@@ -76,8 +98,11 @@ const randomDoublyLinkedList = new DoublyLinkedList();
 console.log(randomDoublyLinkedList);
 randomDoublyLinkedList.addToHead('Add first head element');
 randomDoublyLinkedList.addToHead('Add second head element');
+randomDoublyLinkedList.addToTail('Add first tail element');
 console.log(randomDoublyLinkedList);
-randomDoublyLinkedList.removeTail();
+randomDoublyLinkedList.removeByData('Add second head element');
 console.log(randomDoublyLinkedList);
-randomDoublyLinkedList.removeTail();
-console.log(randomDoublyLinkedList);
+randomDoublyLinkedList.removeByData('Add first tail element');
+randomDoublyLinkedList.removeByData('Add first head');
+randomDoublyLinkedList.removeByData('Add first head element');
+randomDoublyLinkedList.printList();
