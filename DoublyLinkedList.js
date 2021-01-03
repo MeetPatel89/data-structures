@@ -29,6 +29,19 @@ class DoublyLinkedList {
         this.tail = newHead;
     }
   }
+
+  addToTail(data) {
+      const newTail = new NodeDouble(data);
+      const currentTail = this.tail;
+      if (currentTail) {
+          currentTail.nextNode = newTail;
+          newTail.previousNode = currentTail;
+      }
+      this.tail = newTail;
+      if (!this.head) {
+          this.head = newTail;
+      }
+  }
 }
 
 const randomDoublyLinkedList = new DoublyLinkedList();
@@ -38,3 +51,5 @@ console.log(randomDoublyLinkedList);
 randomDoublyLinkedList.addToHead('Second list element');
 randomDoublyLinkedList.addToHead('Third list element');
 console.log(randomDoublyLinkedList);
+randomDoublyLinkedList.addToTail('New first tail added')
+console.log(randomDoublyLinkedList.tail.previous.previous.data)
