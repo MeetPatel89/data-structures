@@ -45,7 +45,7 @@ class LinkedList {
           currentHead = currentHead.nextNode;
       }
       listData += `<tail>`
-      return listData;
+      console.log(listData);
   }
 }
 

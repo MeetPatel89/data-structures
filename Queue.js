@@ -11,6 +11,12 @@ class Queue {
     this.size++;
     console.log(`Added '${data}'! Queue size is now ${this.size}`);
   }
+
+  dequeue() {
+      const data = this.queue.removeHead();
+      this.size--;
+      console.log(`Removed ${data}! Queue size is ${this.size}`);
+  }
 }
 
 const restaurantOrder = new Queue();
@@ -19,5 +25,7 @@ restaurantOrder.enqueue('first order');
 restaurantOrder.enqueue('second order');
 restaurantOrder.enqueue('third order');
 console.log(restaurantOrder);
-console.log(restaurantOrder.queue.head.next);
+restaurantOrder.queue.printList();
+restaurantOrder.dequeue();
+restaurantOrder.queue.printList();
 
