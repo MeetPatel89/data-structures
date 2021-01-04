@@ -23,6 +23,17 @@ class HashMap {
     if (!linkedList.head) {
         linkedList.addToHead({key, value});
         return;
+    } else {
+        let currentNode = linkedList.head;
+        while(currentNode) {
+            if (currentNode.data.key === key) {
+                currentNode.data = {key, value}
+            } else if (!currentNode.nextNode) {
+                currentNode.nextNode = new Node({key, value});
+                break;
+            }
+            currentNode = currentNode.nextNode();
+        }
     }
   }
 
