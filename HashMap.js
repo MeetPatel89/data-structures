@@ -6,18 +6,21 @@ class HashMap {
   hash(key) {
     let hashCode = 0;
     for (let i = 0; i < key.length; i++) {
-      console.log('charcode for ' + key[i] + ' is ' + key.charCodeAt(i));
-      console.log(hashCode);
       hashCode += key.charCodeAt(i) + hashCode;
     }
     hashCode = hashCode % this.hashmap.length;
     return hashCode;
   }
+
+  assign(key, value) {
+      const arrayIndex = this.hash(key);
+      this.hashmap[arrayIndex] = value;
+  }
 }
 
-const myHashMap = new HashMap(4);
-console.log(myHashMap);
-console.log(myHashMap.hash('key'));
-console.log(myHashMap.hash('key'));
-console.log(myHashMap.hash('id'));
-console.log(myHashMap.hash('id'));
+const employees = new HashMap(3);
+console.log(employees.hash('3456'))
+employees.assign('3456', 'Nautilus');
+console.log(employees);
+console.log(employees.hashmap);
+console.log(employees.hash('3456'));
