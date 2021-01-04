@@ -16,6 +16,11 @@ class HashMap {
       const arrayIndex = this.hash(key);
       this.hashmap[arrayIndex] = value;
   }
+
+  retrieve(key) {
+      const arrayIndex = this.hash(key);
+      return this.hashmap[arrayIndex];
+  }
 }
 
 const employees = new HashMap(3);
@@ -24,3 +29,4 @@ employees.assign('3456', 'Nautilus');
 console.log(employees);
 console.log(employees.hashmap);
 console.log(employees.hash('3456'));
+console.log(employees.retrieve('3456'));
