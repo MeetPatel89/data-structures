@@ -10,11 +10,14 @@ class HashMap {
       console.log(hashCode);
       hashCode += key.charCodeAt(i) + hashCode;
     }
+    hashCode = hashCode % this.hashmap.length;
     return hashCode;
   }
 }
 
-const hashmap = new HashMap();
-let x = hashmap.hash("dad");
-console.log(x);
-console.log(hashmap.hash("dda"));
+const myHashMap = new HashMap(4);
+console.log(myHashMap);
+console.log(myHashMap.hash('key'));
+console.log(myHashMap.hash('key'));
+console.log(myHashMap.hash('id'));
+console.log(myHashMap.hash('id'));
