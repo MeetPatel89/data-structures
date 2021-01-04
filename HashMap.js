@@ -19,7 +19,11 @@ class HashMap {
 
   assign(key, value) {
     const arrayIndex = this.hash(key);
-    this.hashmap[arrayIndex] = value;
+    const linkedList = this.hashmap[arrayIndex];
+    if (!linkedList.head) {
+        linkedList.addToHead({key, value});
+        return;
+    }
   }
 
   retrieve(key) {
@@ -29,9 +33,4 @@ class HashMap {
 }
 
 const employees = new HashMap(3);
-console.log(employees.hash('3456'));
-employees.assign('3456', 'Nautilus');
 console.log(employees);
-console.log(employees.hashmap);
-console.log(employees.hash('3456'));
-console.log(employees.retrieve('3456'));
