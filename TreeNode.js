@@ -16,9 +16,6 @@ class TreeNode {
         const length = this.children.length;
         this.children = this.children.filter(child => {
             if (childToRemove instanceof TreeNode) {
-                console.log(child);
-                console.log(childToRemove);
-                console.log(childToRemove.data !== child.data);
                 return childToRemove.data !== child.data;
             } else {
                 return childToRemove !== child.data
@@ -27,6 +24,15 @@ class TreeNode {
         if (length === this.children.length) {
             this.children.forEach(child => child.removeChild(childToRemove))
         }
+    }
+
+    print(level = 0) {
+        let result = '';
+        for (let i = 0; i < level; i++) {
+            result += '-- ';
+        }
+        console.log(`${result}${this.data}`);
+        this.children.forEach(child => child.print(level + 1));
     }
 }
 
@@ -37,11 +43,10 @@ tree.addChild(34);
 tree.children[0].addChild(50);
 tree.children[0].addChild(101);
 tree.children[0].addChild(22);
-console.log(tree);
-console.log(tree.children[0]);
 const nodeToRemove = new TreeNode(101);
-console.log(nodeToRemove);
-console.log('REMOVE CHILD');
 tree.removeChild(nodeToRemove);
-console.log(tree.children[0]);
+console.log(tree);
+console.log('Printed tree...');
+tree.print();
+
 module.exports = TreeNode;
