@@ -21,10 +21,28 @@ class BinaryTree {
       }
     }
   }
+
+  retrieve(value) {
+      if (value === this.value) {
+          return this
+      } else if (value < this.value && this.left) {
+            return this.left.retrieve(value);
+      } else if (value > this.value && this.right) {
+          return this.right.retrieve(value);
+      } else {
+          return null;
+      }
+  }
 }
 
 const bt = new BinaryTree(35);
 console.log(bt);
 bt.insert(30);
 bt.insert(50);
+bt.insert(28);
+bt.insert(32);
+bt.insert(45);
+bt.insert(54);
 console.log(bt);
+console.log('Retrieve operation on binary tree');
+console.log(bt.retrieve(450));
