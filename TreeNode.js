@@ -1,44 +1,56 @@
 class TreeNode {
-    constructor(data) {
-        this.data = data;
-        this.children = new Array();
-    }
+  constructor(data) {
+    this.data = data;
+    this.children = new Array();
+  }
 
-    addChild(child) {
-        if (child instanceof TreeNode) {
-            this.children.push(child)
-        } else {
-            this.children.push(new TreeNode(child))
-        }
+  addChild(child) {
+    if (child instanceof TreeNode) {
+      this.children.push(child);
+    } else {
+      this.children.push(new TreeNode(child));
     }
+  }
 
-    removeChild(childToRemove) {
-        const length = this.children.length;
-        this.children = this.children.filter(child => {
-            if (childToRemove instanceof TreeNode) {
-                return childToRemove.data !== child.data;
-            } else {
-                return childToRemove !== child.data
-            }
-        })
-        if (length === this.children.length) {
-            this.children.forEach(child => child.removeChild(childToRemove))
-        }
+  removeChild(childToRemove) {
+    const length = this.children.length;
+    this.children = this.children.filter((child) => {
+      if (childToRemove instanceof TreeNode) {
+        return childToRemove.data !== child.data;
+      } else {
+        return childToRemove !== child.data;
+      }
+    });
+    if (length === this.children.length) {
+      this.children.forEach((child) => child.removeChild(childToRemove));
     }
+  }
 
-    print(level = 0) {
-        let result = '';
-        for (let i = 0; i < level; i++) {
-            result += '-- ';
-        }
-        console.log(`${result}${this.data}`);
-        this.children.forEach(child => child.print(level + 1));
+  print(level = 0) {
+    let result = '';
+    for (let i = 0; i < level; i++) {
+      result += '-- ';
     }
+    console.log(`${result}${this.data}`);
+    this.children.forEach((child) => child.print(level + 1));
+  }
 
-    depthFirstTraversal() {
-        console.log(this.data);
-        this.children.forEach(child => child.depthFirstTraversal());
+  depthFirstTraversal() {
+    console.log(this.data);
+    this.children.forEach((child) => child.depthFirstTraversal());
+  }
+
+  breadthFirstTraversal() {
+    let queue = [this];
+    while (queue.length) {
+      console.log(`Before extraction: ${queue}`);
+      const current = queue.shift();
+      console.log(current.data);
+      console.log(`After extraction: ${queue}`);
+      queue = queue.concat(current.children);
+      console.log(`After concatenation: ${queue}`);
     }
+  }
 }
 
 const tree = new TreeNode(15);
@@ -59,5 +71,7 @@ for (let i = 0; i < 3; i++) {
 console.log(tree);
 tree.print();
 tree.depthFirstTraversal();
+console.log('Breadth First Tree Traversal');
+tree.breadthFirstTraversal();
 
 module.exports = TreeNode;
