@@ -34,19 +34,30 @@ class TreeNode {
         console.log(`${result}${this.data}`);
         this.children.forEach(child => child.print(level + 1));
     }
+
+    depthFirstTraversal() {
+        console.log(this.data);
+        this.children.forEach(child => child.depthFirstTraversal());
+    }
 }
 
-const tree = new TreeNode(1);
-tree.addChild(4);
-tree.addChild(40);
-tree.addChild(34);
-tree.children[0].addChild(50);
-tree.children[0].addChild(101);
-tree.children[0].addChild(22);
-const nodeToRemove = new TreeNode(101);
-tree.removeChild(nodeToRemove);
+const tree = new TreeNode(15);
+const randomize = () => Math.floor(Math.random() * 20);
+
+// add first-level children
+for (let i = 0; i < 3; i++) {
+  tree.addChild(randomize());
+}
+
+// add second-level children
+for (let i = 0; i < 3; i++) {
+  for (let j = 0; j < 2; j++) {
+    tree.children[i].addChild(randomize());
+  }
+}
+
 console.log(tree);
-console.log('Printed tree...');
 tree.print();
+tree.depthFirstTraversal();
 
 module.exports = TreeNode;
