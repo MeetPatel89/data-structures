@@ -39,9 +39,21 @@ class HashMap {
 
   retrieve(key) {
     const arrayIndex = this.hash(key);
-    return this.hashmap[arrayIndex];
+    let currentNode = this.hashmap[arrayIndex].head;
+    while(currentNode) {
+        if (currentNode.data.key === key) {
+            return currentNode.data.value;
+        }
+        currentNode = currentNode.nextNode;
+    } 
+    return null;
   }
 }
 
 const employees = new HashMap(3);
 console.log(employees);
+employees.assign('234', 'Nautilus');
+employees.assign('456', 'Fibonacci');
+employees.assign('987', 'Logarithm');
+console.log(employees.retrieve('4563'));
+
