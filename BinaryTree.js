@@ -33,6 +33,20 @@ class BinaryTree {
           return null;
       }
   }
+
+  depthFirstTraversal() {
+      if (this.left) {
+          console.log(this.value);
+          console.log('');
+          this.left.depthFirstTraversal();
+      }
+      console.log(this.value, this.depth);
+      if (this.right) {
+          console.log(this.value);
+          console.log('');
+          this.right.depthFirstTraversal();
+      }
+  }
 }
 
 const bt = new BinaryTree(35);
@@ -46,3 +60,5 @@ bt.insert(54);
 console.log(bt);
 console.log('Retrieve operation on binary tree');
 console.log(bt.retrieve(450));
+console.log('Depth first traversal');
+bt.depthFirstTraversal();
