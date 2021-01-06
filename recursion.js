@@ -9,3 +9,23 @@ const sumFunc = inputArr => {
 }
 
 console.log(sumFunc([2, 3, 8, 9, 29]));
+
+const iterativeFactorialFor = n => {
+    let factorial = 1;
+    for (let i = 1; i <= n; i++) {
+        factorial = factorial * i;
+    }
+    return factorial;
+}
+
+const iterativeFactorialWhile = n => {
+    let factorial = 1;
+    while (n > 0) {
+        factorial = factorial * n;
+        n--;
+    }
+    return factorial;
+}
+
+console.log(iterativeFactorialFor(4));
+console.log(iterativeFactorialWhile(4));
